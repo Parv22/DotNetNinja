@@ -4,15 +4,17 @@ public class ConstructorsAndDestructors
 {
     public static void Main(string[] args)
     {
-        int total = 3;
-        Person[] persons = new Person[total];
+        int totalFamilyMembers = 3;
+        Person[] persons = new Person[totalFamilyMembers];
+
+        Console.WriteLine("Enter names for your family members");
     
-        for (int i = 0; i < total; i++)
+        for (int i = 0; i < totalFamilyMembers; i++)
         {
             persons[i] = new Person(Console.ReadLine());
         }
     
-        for (int i = 0; i < total; i++)
+        for (int i = 0; i < totalFamilyMembers; i++)
         {
             Console.WriteLine(persons[i].ToString());
         }
@@ -20,21 +22,21 @@ public class ConstructorsAndDestructors
     
     public class Person
     {
-        public string Name { get; set; }
+        private string _name { get; set; }
     
         public Person(string name)
         {
-            Name = name;
+            _name = name;
         }
     
         public override string ToString()
         {
-            return "Hello! My name is " + Name;
+            return "You Entered -> " + _name;
         }
     
         ~Person()
         {
-            Name = string.Empty;
+            _name = string.Empty;
         }
     }
 }
