@@ -4,7 +4,12 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form id=f1 runat=”server”>
+    <br><br>
+    <h3> Move The Mouse Over Me!</h3>
+    <button class="btn" id="Button2" OnServerClick="Button2_Click"
+    style="background-color:lightgreen;border-color:black;"
+    onmouseover="this.style.backgroundColor='yellow'"
+    onmouseout="this.style.backgroundColor='lightgreen'"
+    runat="server">Click Me!</button>
+</form>
