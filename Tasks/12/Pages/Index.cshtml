@@ -4,7 +4,47 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Scripts {
+
+<script lang="javascript">
+    function showPrice() {
+          Array.prototype.slice.call(document.querySelectorAll('ul[data-tag="channelList"] li')).forEach(function(element){
+            if(element.classList.contains('active')){
+            document.getElementById("price").innerHTML = "This costs $"+element.id+"."
+            }
+        });
+    }
+
+    function switchImage(el){
+        Array.prototype.slice.call(document.querySelectorAll('ul[data-tag="channelList"] li')).forEach(function(element){
+        element.classList.remove('active');
+        });
+        el.classList.add('active');
+        document.getElementById("toy-image").src = "/images/"+el.id+".jpeg"
+        document.getElementById("price").innerHTML = "..."
+    }
+</script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div>
+                <ul data-tag="channelList" class="list-group">
+                    <li id="1" onclick="switchImage(this)" class="list-group-item active">Item 1</li>
+                    <li id="2" onclick="switchImage(this)" class="list-group-item">Item 2</li>
+                    <li id="3" onclick="switchImage(this)" class="list-group-item">Item 3</li>
+                </ul>
+            </div>
+            <br><br>
+            <div>
+                <button id="price-button" onclick="showPrice()" class="btn btn-primary"> Show price!</button>
+            </div>
+        </div>
+        <div class="col">
+            <img id="toy-image" src="/images/1.jpeg" alt="..." class="img-thumbnail">
+            <br><br>
+            <h3 id="price"></h3>
+        </div>
+    </div>
 </div>
